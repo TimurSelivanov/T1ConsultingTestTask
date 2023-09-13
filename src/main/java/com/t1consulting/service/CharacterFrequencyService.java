@@ -13,7 +13,7 @@ public class CharacterFrequencyService {
     public String calculateCharacterFrequency(String input) {
         Map<Character, Integer> frequencyMap = new HashMap<>();
 
-        for(char c : input.toCharArray()) {
+        for (char c : input.toCharArray()) {
             frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);
         }
 

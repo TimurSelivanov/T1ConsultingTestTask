@@ -17,6 +17,9 @@ public class CharacterFrequencyController {
     //method to process HTTP request
     @GetMapping("/character-frequency")
     public ResponseEntity<String> getCharacterFrequencyHTTP(@RequestParam String input) {
+        if (input == null || input.isEmpty()) {
+            return ResponseEntity.badRequest().body("Input can not be empty");
+        }
         String result = characterFrequencyService.calculateCharacterFrequency(input);
 
         return ResponseEntity.ok(result);
