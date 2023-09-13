@@ -1,10 +1,27 @@
 package com.t1consulting.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.t1consulting.service.CharacterFrequencyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
 public class CharacterFrequencyController {
-    //TODO Add methods to process requests
+
+    @Autowired
+    private CharacterFrequencyService characterFrequencyService;
+
+    //method to process HTTP request
+    @GetMapping("/character-frequency")
+    public ResponseEntity<String> getCharacterFrequencyHTTP(@RequestParam String input) {
+        String result = characterFrequencyService.calculateCharacterFrequency(input);
+
+        return ResponseEntity.ok(result);
+    }
+
+    //TODO method to process JSON request
+
 }
